@@ -1,0 +1,169 @@
+{% extends 'public/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+{% block title %}
+Home
+{% endblock %}
+{% block content %}
+        <!-- Header Start -->
+        <div class="container-fluid header bg-white p-0" style="margin-top:5%">
+            <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
+                <div class="col-md-6 p-5 mt-lg-5">
+                    <h1 class="display-5 animated fadeIn mb-4">Tupocracy </h1>
+                    <p class="animated fadeIn mb-4 pb-2">Tupocracy is a socio-political culture or doctrine invented by Dr. Godwin Akpan Amaowoh, a Nigerian Clergyman, in 2006 as the brainchild of his doctoral dissertation at Nigeria’s foremost institution of higher Education, the University of Nigeria, Nsukka, Faculty of the Social Sciences.</p>
+                    <a href="{% url 'tupo_app:emytology' %}" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Read More</a>
+                </div>
+                <div class="col-md-6 animated fadeIn">
+                    <div class="owl-carousel header-carousel">
+                        <div class="owl-carousel-item">
+                            <img class="img-fluid go" src="{% static 'public/img/award.jpg' %}" alt="">
+                        </div>
+                        <div class="owl-carousel-item">
+                            <img class="img-fluid go"  src="{% static 'public/img/tupo.jpg' %}" alt="">
+                        </div>
+                        <div class="owl-carousel-item">
+                            <img class="img-fluid go"   src="{% static 'public/img/jj.jpg' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+
+
+
+
+
+        <!-- About Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    {% if about %}
+                    
+                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                        <div class="about-img position-relative overflow-hidden p-5 pe-0">
+                            <img class="img-fluid w-100" src="{{about.get_abt_img}}">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                        <h1 class="mb-4">{{about.name}}</h1>
+                       <p>{{about.about_content|truncatewords:30|safe}}</p>
+                        <a class="btn btn-primary py-3 px-5 mt-3" href="{% url 'tupo_app:about' %}">Read More</a>
+                    </div>
+                  
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+        <!-- About End -->
+
+
+
+
+        <!-- Call to Action Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="bg-light rounded p-3">
+                    <div class="bg-white rounded p-4" style="border: 1px dashed rgba(0, 185, 142, .3)">
+                        <div class="row g-5 align-items-center">
+                            {% if credit %}
+                            {% for c in credit %}
+                            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                                <img class="img-fluid  w-100" src="{{c.get_img}}" alt="">
+                            </div>
+                            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                                <div class="">
+                                    <h1 class="mb-3">Credit</h1>
+                                    <p>{{c.content|truncatewords:50|safe}}</p>
+                                </div>
+                                <a href="{% url 'tupo_app:about' %}" class="btn btn-primary py-3 px-4 me-2"><i class=""></i>Read More</a>
+                               
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Call to Action End -->
+
+
+
+
+        <!-- Testimonial Start -->
+        <div class="container-fluid py-5 comm-lg">
+            <div class="container-fluid">
+                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 1000px;">
+                    <h1 class="mb-3">Our Community</h1>
+                   
+                </div>
+                <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+                    {% if community %}
+                            {% for c in community %}
+                    <div class="testimonial-item bg-light rounded p-3">
+                        <div class="bg-white border rounded p-4">
+                            
+                            <div class="d-flex align-items-center">
+                                <img class="img-fluid flex-shrink-0 rounded" src="{{ c.get_img }}" style="width: 45px; height: 45px;">
+                                <div class="ps-3">
+                                    <h6 class="fw-bold mb-1">{{ c.title }}</h6>
+                                    <p>From</p>
+                                    <h6 class="fw-bold mb-1">{{ c.name }}</h6>
+                                    <!-- <small>Profession</small> -->
+                                </div>
+                            </div>
+                            <p>{{c.content|safe}}</p>
+                           <h3>Click here for full article</h3>
+                           <a href="{{c.link}}">{{c.link}}</a>
+                         
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    
+                </div>
+                <a href="{% url 'tupo_app:community' %}" class="btn btn-primary py-3 px-4 m-auto"><i class=""></i>View More</a>
+               
+            </div>
+        </div>
+        <!-- Testimonial End -->
+
+             <!-- Team Start -->
+             <div class="container py-5 comm-sm">
+                <div class="container">
+                    <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                        <h1 class="mb-3">Community</h1>
+                        <!-- <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p> -->
+                    </div>
+                    <div class="row g-4">
+                        {% if community %}
+                                {% for c in community %}
+                        <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="team-item rounded overflow-hidden ghop">
+                                <div class="position-relative">
+                                    <img class="img-fluid flex-shrink-0 rounded" src="{{ c.get_img }}" style="width: 45px; height: 45px;">
+                                   
+                                </div>
+                                <div class="text-center p-4 mt-3">
+                                    <h6 class="fw-bold mb-1">{{ c.title }}</h6>
+                                        <p>From</p>
+                                        <h6 class="fw-bold mb-1">{{ c.name }}</h6>
+                                    <small>{{c.content|safe}}</small>
+                                </div>
+                                <h3>Click here for full article</h3>
+                                <a href="{{c.link}}">{{c.link}}</a>
+                            </div>
+                        </div>
+                      
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                    <a href="{% url 'tupo_app:community' %}" class="btn btn-primary py-3 px-4 me-2"><i class=""></i>View More</a>
+                </div>
+            </div>
+            <!-- Team End -->
+        
+
+{% endblock %}

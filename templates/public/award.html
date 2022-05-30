@@ -1,0 +1,520 @@
+{% extends 'public/base.html' %} {% load static %}
+<!DOCTYPE html>
+{% block title %} Home {% endblock %} {% block content %}
+
+<!-- Header Start -->
+<div class="container-fluid header bg-white p-0" style="margin-top: 2%">
+  <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
+    <div class="col-md-6 p-5 mt-lg-5">
+      <h1 class="display-5 animated fadeIn mb-4">Award</h1>
+      <nav aria-label="breadcrumb animated fadeIn">
+        <ol class="breadcrumb text-uppercase">
+          <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+         
+          <li class="breadcrumb-item text-body active" aria-current="page">
+            Award
+          </li>
+        </ol>
+      </nav>
+    </div>
+    <div class="col-md-6 animated fadeIn">
+      <img
+        class="img-fluid"
+        style="height: 500px"
+        src="{% static 'public/img/jj.jpg' %}"
+        alt=""
+      />
+    </div>
+  </div>
+</div>
+<!-- Header End -->
+
+<!-- Contact Start -->
+<div class="container-xxl py-5">
+  <div class="container">
+    <div class="row g-4">
+      {% if award %} {% for a in award %}
+      <div class="col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+        <img src="{{a.get_img}}" width="60%" alt="" />
+      </div>
+      <div class="col-md-6">
+        <div class="wow fadeInUp" data-wow-delay="0.5s">
+          <p class="mb-4">{{a.content|safe}}</p>
+        </div>
+      </div>
+      {% endfor %} {% endif %}
+    </div>
+
+    <div class="row g-4 mt-5">
+      <div class="col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+        <img class="img-fluid" src="{% static 'public/img/award.jpg' %}" alt="">
+        <p><span style="font-size: 20px; font-weight: bolder;color: rgb(0, 0, 116);">TUPOCRACY ANNUAL LECTURE</span> will be given by a special invited key note speaker during the award event. </p>
+        <br>
+        <h6>ELIGIBILITY CRITERIA FOR NOMINATION</h6>
+        <p>Must demonstrate exceptional leadership in any field of human endeavour as a representative of an industrial, academic, governmental, non-governmental or technical organization.</p>
+        <br>
+        <h6>HOW TO NOMINATE</h6>
+        <p>Please, submit the following documents to complete the nomination process:</p>
+        <br>
+        <h6>COMPLETED NOMINATION FORM</h6>
+        <p>Nominator's Supporting Statement: This statement is to be included within the principal nominator’s cover letter of endorsement. The supporting statement should outline the qualifications of the nominee for the Tupocracy Leadership Award. The nominator’s supporting letter should be no more than two pages.</p>
+        <h6>CURRENT RESUME OR CURRICULUM VITAE, NO MORE THAN 5 PAGES</h6>
+        <p>Two to five letters of endorsement are required. Each letter should be no longer than one page. No more than one letter of endorsement may be from the same affiliation as the nominee.</p>
+
+      </div>
+      <div class="col-md-6">
+        <div class="wow fadeInUp" data-wow-delay="0.5s">
+          <p class="mb-4">
+            Send complete nomination packet to TLA contacts for consideration.
+          </p>
+          <h2 class="text-center">NOMINATION FORM </h2>
+          <form method="post">
+            {% if messages %}
+            {% for m in messages %}
+            <div class="alert alert-success">{{m}}</div>
+            {% endfor %}
+            {% endif %}
+            <p>(nomination materials are confidential.)</p>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <label for="name">Award Title</label>
+                  {{form.award_title}}
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                    <label style="font-weight: 600; font-size: 20px">
+                        Date/Time 
+                      </label>
+                      <div
+                        class="input-group date"
+                        id="datetimepicker1"
+                        data-target-input="nearest"
+                      >
+                        {{ form.da_ti }}
+                        <div
+                          class="input-group-append"
+                          data-target="#datetimepicker1"
+                          data-toggle="datetimepicker"
+                        >
+                          <div class="input-group-text">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  {{form.title}}
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <label for="name">First Name</label>
+                  {{form.first_name}}
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="name">Last Name</label>
+                <div class="form-floating">
+                  
+                  {{form.last_name}}
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                    
+                      <div
+                        class="input-group date"
+                        id="datetimepicker1"
+                        data-target-input="nearest"
+                      >
+                        {{form.birthday}}
+                        <div
+                          class="input-group-append"
+                          data-target="#datetimepicker1"
+                          data-toggle="datetimepicker"
+                        >
+                          <div class="input-group-text">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <label for="name">Title/Position</label>
+                  {{form.position}}
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <label for="name">Employer</label>
+                  {{form.employer}}
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <label for="name">Addresss</label>
+                  {{form.home}}
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <label for="name">City</label>
+                  {{form.city}}
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <label for="name">State</label>
+                  {{form.state}}
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <label for="name">Zip/Postal Code</label>
+                  {{form.state}}
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <label for="name">Telephone</label>
+                  {{form.phone}}
+                </div>
+              </div>
+              
+                <div class="col-md-6">
+                  <div class="form-floating">
+                   {{form.email}}
+                    <label for="email">Your Email</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <p>Is the nominee a member of Tupocracy Leadership Academy? </p>
+                <div class="form-floating">
+                  {{form.select_all}}
+                </div>
+              </div>
+              <div class="col-12">
+                <p>If Yes, Tupocracy Leadership Academy  Member  </p>
+                <div class="form-floating">
+                  {{form.member}}
+                </div>
+              </div>
+              <br><br>
+
+              <div class="col-12">
+                <button class="btn btn-primary w-100 py-3" type="submit">
+                  Send Message
+                </button>
+              </div>
+            </div>
+            {% csrf_token %}
+          </form>
+        </div>
+      </div>
+     
+    </div>
+   <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="wow fadeInUp" data-wow-delay="0.5s">
+         
+          <h2 class="text-center">PRINCIPAL NOMINATOR </h2>
+          <form method="post">
+            {% if messages %}
+            {% for m in messages %}
+            <div class="alert alert-success">{{m}}</div>
+            {% endfor %}
+            {% endif %}
+           
+            <div class="row g-3">
+              
+            
+              <div class="col-md-6">
+                <div class="form-floating">
+                  {{p_form.title}}
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  
+                  {{p_form.first_name}}
+                  <label for="firstname">First Name</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+               
+                <div class="form-floating">
+                  
+                  {{p_form.last_name}}
+                  <label for="lastname">Last Name</label>
+                </div>
+              </div>
+              
+              <div class="col-md-6">
+                <div class="form-floating">
+                  
+                  {{p_form.position}}
+                  <label for="title">Title/Position</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                 
+                  {{p_form.employer}}
+                  <label for="employer">Employer</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  
+                  {{p_form.home}}
+                  <label for="address">Addresss</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                 
+                  {{p_form.city}}
+                  <label for="city">City</label>
+                </div>
+                
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                 
+                  {{p_form.state}}
+                  <label for="state">State</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                 
+                  {{p_form.state}}
+                  <label for="zip">Zip/Postal Code</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                 
+                  {{p_form.phone}}
+                  <label for="telephone">Telephone</label>
+                </div>
+              </div>
+              
+                <div class="col-md-6">
+                  <div class="form-floating">
+                   {{p_form.email}}
+                    <label for="email">Your Email</label>
+                  </div>
+                </div>
+              
+              <div class="col-md-6">
+                <p>Member of Tupocracy Leadership Academy? </p>
+                <div class="form-floating">
+                  {{p_form.select_all}}
+                </div>
+              </div>
+              <div class="col-md-12">
+                <p>If Yes, Tupocracy Leadership Academy Member   </p>
+                <div class="form-floating">
+                  {{p_form.member}}
+                </div>
+              </div>
+              <div class="col-md-12">
+                <p>As the nominator, do you sit on any committees or panels that are
+                  charged with selecting the recipient of the award for which the above
+                  candidate is being nominated? 
+                   </p>
+                <div class="form-floating">
+                  {{p_form.select_all}}
+                </div>
+              </div>
+              <div class="col-md-12">
+                <p>If yes, please list all such committees or panels on a separate sheet.
+                   </p>
+                   <h3>ENDORSEMENTS</h3>
+                   <p>See submission requirements on Tupocracy Leadership Award page for
+                    each award.
+                    </p>
+                <div class="form-floating">
+                  {{p_form.name1}}
+                  <label for="">1.Name</label><br>
+                
+                </div>
+                <div class="form-floating">
+                  {{p_form.affilation1}}
+                  <label for="">1.Affilation</label><br>
+
+                </div>
+                <div class="form-floating">
+                  {{p_form.name2}}
+                  <label for="">2.Name</label><br>
+                
+                </div>
+                <div class="form-floating">
+                  {{p_form.affilation2}}
+                  <label for="">2.Affilation</label><br>
+
+                </div>
+                <div class="form-floating">
+                  {{p_form.name3}}
+                  <label for="">3.Name</label><br>
+                
+                </div>
+                <div class="form-floating">
+                  {{p_form.affilation3}}
+                  <label for="">3.Affilation</label><br>
+
+                </div>
+                <div class="form-floating">
+                  {{p_form.name4}}
+                  <label for="">4.Name</label><br>
+                
+                </div>
+                <div class="form-floating">
+                  {{p_form.affilation4}}
+                  <label for="">4.Affilation</label><br>
+
+                </div>
+                <div class="form-floating">
+                  {{p_form.name5}}
+                  <label for="">5.Name</label><br>
+                
+                </div>
+                <div class="form-floating">
+                  {{p_form.affilation5}}
+                  <label for="">5.Affilation</label><br>
+
+                </div>
+                
+              </div>
+              <br><br>
+
+              <div class="col-12">
+                <button class="btn btn-primary w-100 py-3" type="submit">
+                  Send 
+                </button>
+              </div>
+            </div>
+            {% csrf_token %}
+          </form>
+        </div>
+    </div>
+
+   </div>
+
+    <div class="container">
+      <div class="row g-4 mt-5 ">
+        <div class="col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+          <img class="img-fluid" src="{% static 'public/img/tupo.jpg' %}" alt="">
+          <h6>SPONSORSHIP</h6>
+          <p>If your organization is interested in supporting .<span style="font-size: 20px; font-weight: bolder;color: rgb(0, 0, 116);">TUPOCRACY LEADERSHIP AWARDS (TLA),</span> Please contact us immediately will be given by a special invited key note speaker during the award event. </p>
+          <br>
+          <h6>WHY SPONSOR/SUPPORT</h6>
+            <ul>
+              <li>
+                Showcase and educate potential and existing clients about your products and services.
+              </li>
+              <li>
+                Enhance your company profile by networking with the correct target audience.
+              </li>
+              <li>
+                Build your brand and expand your leads for potential business.
+              </li>
+              <li>Keep abreast of latest leadership trend in Nigeria.</li>
+  
+              <li>Strengthen your brand relationships with the general public and the cooperate world.</li> 
+              <li>	Align your brand with the most inspiring and innovative Leadership Awards in Nigeria.</li>
+              <li>Direct access to leaders and emerging stars allows you to build on existing business relationships, and to develop new ones.</li>
+              <li>Join a selected group of companies supporting leadership successes, a positive position that will lead to brand preference.</li>
+              <li>Embed your business at the heart of the industry throughout the event build-up and to the ceremony.</li>
+              <li>Raise your profile by playing an integral role in the marketing and public relations during and after the event.</li>
+  
+            </ul>
+            <p>Our range of support packages are tailored to suite any budget and objective. To Support <strong>TLA</strong>, Please contact us now.</p>
+          <br>
+          <h5>SPONSORSHIP/SUPPORT PACKAGES</h45>
+            <h6 style="color: rgb(201, 93, 5);">EASY SUPPORT</h6>
+            <p>EASY SUPPORT  = NGN</p>
+            <p>Support Recognition inside Award Dinner Brochure</p>
+            <p>Full Page Advert inside Awards  Dinner Brochure</p>
+            <p>5 Free VIP Invitations to the Award Dinner Ceremony</p>
+            <br>
+            <h6 style="color: rgb(201, 93, 5);">SMART SUPPORT</h6>
+            <p> SMART SUPPORT = NGN</p>
+            <p>Support Recognition inside Award Dinner Brochure</p>
+            <p>Full Page Advert inside Awards  Dinner Brochure</p>
+            <p>1 Roll-Up Banners Display at the Award Dinner Ceremony</p>
+            <p>1 Exclusive VIP Table at the Award Dinner Ceremony</p>
+            <br>
+            
+        </div>
+        <div class="col-md-6">
+          <div class="wow fadeInUp" data-wow-delay="0.5s">
+          
+          <h6 style="color: rgb(201, 93, 5);">UNIQUE SUPPORT</h6>
+          <p>UNIQUE SUPPORT = NGN</p>
+          <p>Support Recognition inside Award Dinner Brochure</p>
+          <p>Full Page Advert inside Awards  Dinner Brochure</p>
+          <p>5 Minutes Products/Services (Video) Promotion</p>
+          <p>Guest Registration Desk Complimentary Souvenirs Distribution</p>
+          <p>2 Roll-Up Banners at the Award Dinner Ceremony</p>
+          <p>1 Exclusive VIP Table at the Award Dinner Ceremony</p>
+          <br>
+          <h6 style="color: rgb(201, 93, 5);">DELUXE SUPPORT</h6>
+          <p>DELUXE SUPPORT = NGN</p>
+          <p>Support Recognition inside Award Dinner Brochure</p>
+          <p>Special Recognition Award Trophy & Certificate</p>
+          <p>Souvenirs Distribution at the Award Dinner Ceremony</p>
+          <p>Full Page Advert inside Award Dinner Brochure</p>
+          <p>Mention on Print & Electronic Media Promotion</p>
+          <p>3 Awards Presentation at the Award Dinner Ceremony</p>
+          <p>2 Exclusive VIP Table at the Award Dinner Ceremony</p>
+          <br>
+          <h6 style="color: rgb(201, 93, 5);">DIAMOND SUPPORT</h6>
+          <p>DIAMOND SUPPORT = NGN</p>
+          <p>Support Recognition inside Award Dinner Brochure</p>
+          <p>Special Recognition Award Trophy & Certificate</p>
+          <p>Souvenirs Distribution at the Award Dinner Ceremony</p>
+          <p>Full Page Advert inside Award Dinner Brochure</p>
+          <p>5 Minutes Products/Services (Video) Promotion</p>
+          <p>Mention on Print & Electronic Media Promotion</p>
+          <p>Company Representative at event Pre-Event Press Conference</p>
+          <p>6 Awards Presentation at the Award Dinner Ceremony</p>
+          <p>4 Roll-Up Banners at the Award Dinner Ceremony</p>
+          <p>3 Exclusive VIP Tables at the Award Dinner Ceremony</p>
+          <br>
+          <h6 style="color: rgb(201, 93, 5);">PLATINUM SUPPORT</h6>
+          <p>PLATINUM  SUPPORT = NGN</p>
+          <p>“Supported By” Title & Souvenirs Co-Branding</p>
+          <p>Support Recognition inside Award Dinner Brochure</p>
+          <p>Special Recognition Award Trophy & Certificate</p>
+          <p>Event Hall & Stage Co-Branding</p>
+          <p>Souvenirs Distribution at the Award Dinner Ceremony</p>
+          <p>5 Minutes Products/Services (Video) Promotion</p>
+          <p>Mention on Print & Electronic Media Promotion</p>
+          <p>Company Representative at event Pre-Event Press Conference</p>
+          <p>10 Awards Presentation at the Award Dinner Ceremony</p>
+          <p>Full Page Advert inside Award Dinner Brochure</p>
+          <p>6 Roll-Up Banners Display at the Award Dinner Ceremony</p>
+          <p>4 Exclusive VIP Tables at the Award Dinner Ceremony</p>
+          <br>
+  
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Contact End -->
+
+{% endblock %}
