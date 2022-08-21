@@ -9,7 +9,7 @@ Home
         <div class="container-fluid header bg-white p-0" style="margin-top:5%">
             <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
                 <div class="col-md-6 p-5 mt-lg-5">
-                    <h1 class="display-5 animated fadeIn mb-4">Tupocracy </h1>
+                    <h1 class=" animated fadeIn mb-4" style="font-family: 'Oleo Script Swash Caps', cursive; font-size: 50px;">Tupocracy </h1>
                     <p class="animated fadeIn mb-4 pb-2">Tupocracy is a socio-political culture or doctrine invented by Dr. Godwin Akpan Amaowoh, a Nigerian Clergyman, in 2006 as the brainchild of his doctoral dissertation at Nigeria’s foremost institution of higher Education, the University of Nigeria, Nsukka, Faculty of the Social Sciences.</p>
                     <a href="{% url 'tupo_app:emytology' %}" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Read More</a>
                 </div>
@@ -41,12 +41,12 @@ Home
                     {% if about %}
                     
                     <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                        <div class="about-img position-relative overflow-hidden p-5 pe-0">
+                        
                             <img class="img-fluid w-100" src="{{about.get_abt_img}}">
-                        </div>
+                       
                     </div>
                     <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                        <h1 class="mb-4">{{about.name}}</h1>
+                        <h1 class="mb-4" style="font-family: 'Oleo Script Swash Caps', cursive;">{{about.name}}</h1>
                        <p>{{about.about_content|truncatewords:30|safe}}</p>
                         <a class="btn btn-primary py-3 px-5 mt-3" href="{% url 'tupo_app:about' %}">Read More</a>
                     </div>
@@ -74,10 +74,10 @@ Home
                             </div>
                             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                                 <div class="">
-                                    <h1 class="mb-3">Credit</h1>
+                                    <h1 class="mb-3" style="font-family: 'Oleo Script Swash Caps', cursive;">Credit</h1>
                                     <p>{{c.content|truncatewords:50|safe}}</p>
                                 </div>
-                                <a href="{% url 'tupo_app:about' %}" class="btn btn-primary py-3 px-4 me-2"><i class=""></i>Read More</a>
+                                <a href="{% url 'tupo_app:about' %}" class="btn btn-outline-primary py-3 px-4 me-2 w-100"><i class=""></i>Read More</a>
                                
                             </div>
                             {% endfor %}
@@ -96,10 +96,10 @@ Home
         <div class="container-fluid py-5 comm-lg">
             <div class="container-fluid">
                 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 1000px;">
-                    <h1 class="mb-3">Our Community</h1>
+                    <h1 class="mb-3" style="font-family: 'Oleo Script Swash Caps', cursive;">Our Community</h1>
                    
                 </div>
-                <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+                <div class="owl-carousel testimonial-carousel wow fadeInUp m-5" data-wow-delay="0.1s">
                     {% if community %}
                             {% for c in community %}
                     <div class="testimonial-item bg-light rounded p-3">
@@ -124,7 +124,7 @@ Home
                     {% endif %}
                     
                 </div>
-                <a href="{% url 'tupo_app:community' %}" class="btn btn-primary py-3 px-4 m-auto"><i class=""></i>View More</a>
+                <a href="{% url 'tupo_app:community' %}" class="btn btn-primary py-3 px-4 m-auto w-100"><i class=""></i>View More</a>
                
             </div>
         </div>
@@ -152,7 +152,7 @@ Home
                                         <h6 class="fw-bold mb-1">{{ c.name }}</h6>
                                     <small>{{c.content|safe}}</small>
                                 </div>
-                                <h3>Click here for full article</h3>
+                                <h4 style="font-family:'Oleo Script Swash Caps', cursive;">Click here for full article</h4>
                                 <a href="{{c.link}}">{{c.link}}</a>
                             </div>
                         </div>
@@ -160,7 +160,7 @@ Home
                         {% endfor %}
                         {% endif %}
                     </div>
-                    <a href="{% url 'tupo_app:community' %}" class="btn btn-primary py-3 px-4 me-2"><i class=""></i>View More</a>
+                    <a href="{% url 'tupo_app:community' %}" class="btn btn-primary py-3 px-4 me-2">View More</a>
                 </div>
             </div>
             <!-- Team End -->

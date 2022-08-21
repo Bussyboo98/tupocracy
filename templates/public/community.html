@@ -8,7 +8,7 @@ Community
 <div class="container-fluid header bg-white p-0" style="margin-top: 3%">
     <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
       <div class="col-md-6 p-5 mt-lg-5">
-        <h1 class="display-5 animated fadeIn mb-4">Community</h1>
+        <h1 class="animated fadeIn mb-4" style="font-family: 'Oleo Script Swash Caps', cursive; font-size: 50px">Community</h1>
         <nav aria-label="breadcrumb animated fadeIn">
           <ol class="breadcrumb text-uppercase">
             <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
@@ -22,7 +22,7 @@ Community
         <img
           class="img-fluid"
          
-          src="{% static 'public/img/emy.jpg' %}"
+          src="../../static/public/img/hannah-busing-Zyx1bK9mqmA-unsplash.jpg"
           alt=""
         />
       </div>
@@ -39,7 +39,7 @@ Community
                             {% if community %}
                             {% for com in community%}
                             <div class="col-lg-12 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="property-item rounded overflow-hidden">
+                                <div class="property-item rounded overflow-hidden p-5">
                                     <div class="position-relative overflow-hidden">
                                         <a href=""><img class="img-fluid" src="{{com.get_img}}" alt=""></a>
                                        
