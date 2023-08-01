@@ -84,3 +84,15 @@ class Community(admin.ModelAdmin):
             'created_at',
             'modified_at',
         ]
+    
+@admin.register(CommunityArticle)  
+class CommunityArticle(admin.ModelAdmin):
+    def get_img(self, obj):
+        return format_html('<img src="{}" width="100" />'.format(obj.img.url))
+
+    list_display = [
+            'title',
+            'img',
+            'created_at',
+            'modified_at',
+        ]

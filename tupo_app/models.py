@@ -114,8 +114,33 @@ class Community(models.Model):
             return '../static/public/img/emy.jpg'
     class Meta():
         verbose_name_plural = 'Community'
+
+
+class CommunityArticle(models.Model):
+    title = models.CharField(max_length=500) 
+    name = models.CharField(max_length=200, verbose_name="Author", blank=True) 
+    slug = models.SlugField(unique=True)
+    img = models.ImageField(blank=True, null=True)
+    content = HTMLField('Content', blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+     
+    def get_img(self):
+        if self.get_img :
+            return self.img.url
+        else:
+            return '../static/public/img/emy.jpg'
+    class Meta():
+        verbose_name_plural = 'Community Article'
     
-   
+    def get_post_url(self):
+        return reverse('tupo_app:single_comm', kwargs={
+            'slug': self.slug,
+        })
+    
 
 class Nomination(models.Model):
     ONE = "Dr."

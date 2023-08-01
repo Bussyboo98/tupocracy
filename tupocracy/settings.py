@@ -70,8 +70,8 @@ MESSAGES_TAGS = {
 
 
 TINYMCE_DEFAULT_CONFIG = {
- 'height': 360,
- 'width': 1100,
+ 'height': 2560,
+ 'width': 4500,
  'cleanup_on_startup': True,
  'custom_undo_redo_levels': 20,
  'selector': 'textarea',

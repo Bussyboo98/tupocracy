@@ -8,6 +8,7 @@ from django.contrib import messages
 from django.shortcuts import render
 from .models import *
 from .forms import *
+from django.urls import reverse_lazy
 from django.views.generic import(
     ListView, DetailView, 
     )
@@ -52,8 +53,36 @@ class Comm(ListView):
     context_object_name = 'community'
     paginate_by = 2
 
+
+class Comm_Article(ListView):
+    model = CommunityArticle
+    template_name = 'public/comm-article.html'
+    context_object_name = 'community_art'
+    paginate_by = 2
+
+    def get_queryset(self):
+        return CommunityArticle.objects.order_by('-created_at')
     
-    
+class Comm_ArticleDetail(DetailView):
+    model = CommunityArticle
+    template_name = 'public/comm-article-details.html'
+    context_object_name = 'comm_det'
+    success_url = reverse_lazy('tupo_app:single_comm')
+   
+
+    def get_object(self):
+        obj = super().get_object()
+        return obj
+
+    def get_context_data(self,**kwargs):
+        context = super().get_context_data(**kwargs)
+        var_slug = self.get_object()
+        get_slug = var_slug.slug
+        
+        return context
+
+   
+
 
 def award(request):
     award= Award.objects.all()
